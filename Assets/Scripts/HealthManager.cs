@@ -6,12 +6,16 @@ public class HealthManager : MonoBehaviour
     public float _curHealth = 10;
     public float _inFramesMax = 1;
     public float _inFramesCur = 0;
-    bool _isDead = false;
+    //i dont remember why i added this i never used it
+    //bool _isDead = false;
+
+    private Animator _deathAnim;
+    public float _deathAnimTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _deathAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,7 +47,13 @@ public class HealthManager : MonoBehaviour
         if (_curHealth <= 0)
         {
             _curHealth = 0;
-            OnDeath();
+            if (GetComponent<PlayerMovement>())
+            {
+                _deathAnim.SetBool("isDead", true);
+                Invoke(nameof(OnDeath), _deathAnimTime);
+            }
+            else
+                OnDeath();
         }
 
         if (_curHealth > _maxHealth)
