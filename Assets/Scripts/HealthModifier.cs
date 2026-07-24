@@ -5,7 +5,7 @@ public class HealthModifier : MonoBehaviour
 
     public float _healthChange = 0;
 
-    HealthTarget _changeTarget = HealthTarget.Player;
+    public HealthTarget _changeTarget = HealthTarget.Player;
 
     //all the targets we can have
     public enum HealthTarget
