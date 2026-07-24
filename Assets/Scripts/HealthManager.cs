@@ -17,19 +17,19 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //invincibility frames
         if (_inFramesCur > 0)
             _inFramesCur -= Time.deltaTime;
+		if (_inFramesCur < 0)
+		{
+            _inFramesCur = 0;
+		}
 
-        if (_curHealth <= 0)
-            OnDeath();
-
-        if (Input.GetKey(KeyCode.G))
-        {
-            ChangeHealth(-1f);
-        }
+		
     }
 
-    void ChangeHealth(float change)
+    //Appying damage or healing
+    public void ChangeHealth(float change)
     {
         if (_inFramesCur > 0)
             return;
@@ -39,10 +39,20 @@ public class HealthManager : MonoBehaviour
         {
             _inFramesCur = _inFramesMax;
         }
-    }
 
+        if (_curHealth <= 0)
+        {
+            _curHealth = 0;
+            OnDeath();
+        }
+
+        if (_curHealth > _maxHealth)
+            _curHealth = _maxHealth;
+    }
+    //dead
     void OnDeath()
     {
         Debug.Log("dead");
+        GameObject.Destroy(gameObject);
     }
 }
