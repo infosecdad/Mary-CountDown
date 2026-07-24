@@ -6,10 +6,13 @@ public class HealthManager : MonoBehaviour
     public float _curHealth = 10;
     public float _inFramesMax = 1;
     public float _inFramesCur = 0;
-    //i dont remember why i added this i never used it
-    //bool _isDead = false;
 
-    private Animator _deathAnim;
+	public float GetHealthMax() { return _maxHealth; }
+	public float GetHealthCur() { return _curHealth; }
+	//i dont remember why i added this i never used it
+	//bool _isDead = false;
+
+	private Animator _deathAnim;
     public float _deathAnimTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
