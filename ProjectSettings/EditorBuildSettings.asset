@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Room.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: cf81ce6a010f68b49bcb541759904198
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

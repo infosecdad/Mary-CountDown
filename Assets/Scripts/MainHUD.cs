@@ -16,6 +16,9 @@ public class MainGameHUD : MonoBehaviour
 	[SerializeField, Tooltip("The health mannager wer're displaying data for")]
 	HealthManager _healthManager;
 
+	[SerializeField, Tooltip("TMP object displaying the # of lives we have.")]
+	TextMeshProUGUI _livesValueText;
+
 	private Animator _healthIAnim;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +34,8 @@ public class MainGameHUD : MonoBehaviour
 		int maxHealth = Mathf.RoundToInt(_healthManager.GetHealthMax());
 		_healthValueText.text = curHealth + "/" + maxHealth;
 
+		_livesValueText.text = GameSessionManager.Instance._playerLives.
+			ToString();
 
 		#region *** Health icon anims ***
 		if (curHealth == maxHealth)

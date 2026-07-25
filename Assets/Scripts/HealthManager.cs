@@ -105,7 +105,7 @@ public class HealthManager : MonoBehaviour
                 Invoke(nameof(OnDeath), _deathAnimTime);
             }
             else
-                OnDeath();
+                GameObject.Destroy(gameObject);
         }
 
         if (_curHealth > _maxHealth)
@@ -116,6 +116,12 @@ public class HealthManager : MonoBehaviour
     {
         Debug.Log("dead");
         _playerEyes.SetActive(false);
-        GameObject.Destroy(gameObject);
-    }
+		GameSessionManager.Instance.OnPlayerDeath(gameObject);
+	}
+	public void Reset()
+	{
+		_deathAnim.SetBool("isDead", false);
+		_curHealth = _maxHealth;
+		_inFramesCur = 0;
+	}
 }
