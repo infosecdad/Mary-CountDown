@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   _cameraTarget: {fileID: 111603937}
-  _targetOffset: {x: 0, y: 0, z: 0}
+  _targetOffset: {x: 0, y: 2, z: 0}
   _cameraDistance: -10
 --- !u!1 &530625900
 GameObject:
