@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
 	public AudioClip _jumpSound;
 	public AudioSource _audioSource;
 	public AudioClip _walkSound;
+	//so that the walk sound does NOT play every frame
+	float _walkSoundCooldown = 0;
 
 	private Animator _playerAnims;
 
 	public bool _isJumping = false;
+	float xinput;
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
@@ -47,25 +50,31 @@ public class PlayerMovement : MonoBehaviour
 		if (_curJumpForce > 0)
 			_startJumpAnim = true;
 
+
+		if (_walkSoundCooldown > 0)
+			_walkSoundCooldown -= Time.deltaTime;
+		if (_walkSoundCooldown <= 0)
+			_walkSoundCooldown = 0;
+
 	}
 
 	void FixedUpdate()
 	{
 
-		float xinput = Input.GetAxis("Horizontal");
+		xinput = Input.GetAxis("Horizontal");
 
 		//for moving on x axis
 		if (Mathf.Abs(xinput) > 0)
 		{
 			rb.linearVelocity = new Vector2(xinput * _moveSpeed, rb.linearVelocity.y);
-			
+
+
 		}
 
 		//for checking if we are jumping
 		if (Input.GetKey(KeyCode.Space) && _isJumping == false)
 		{
 			_curJumpForce += _jumpSpeed;
-
 		}
 		else
 		{
@@ -77,9 +86,10 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, _curJumpForce);
 		}
-	
+			
+
 		//flipping the sprite when we turn around
-			FlipSprite();
+		FlipSprite();
 
 		#region *** Animations ***
 		if (Mathf.Abs(xinput) == 0)
@@ -91,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			_playerAnims.SetBool("isWalking", true);
 			_playerAnims.SetBool("isIdle", false);
-			PlayWalkSound();
+			
 		}
 		if (_startJumpAnim) {
 			_playerAnims.SetBool("isJumping", true);
@@ -108,6 +118,11 @@ public class PlayerMovement : MonoBehaviour
 		if (collider.gameObject.layer == 3)
 		{
 			_isJumping = false;
+			if (Mathf.Abs(xinput) > 0 && _walkSoundCooldown == 0)
+			{
+				PlayWalkSound();
+				_walkSoundCooldown = 0.5f;
+			}
 		}
 		_startJumpAnim = false;
 	}
