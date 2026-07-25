@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class HealthManager : MonoBehaviour
 {
     public float _maxHealth = 10;
@@ -9,6 +10,9 @@ public class HealthManager : MonoBehaviour
     public float _KnockBackX = 1;
     public float _knockBacky = 1;
     public GameObject _playerEyes;
+    public AudioSource _audioSource;
+    public AudioClip _damageSound;
+    public AudioClip _deathSound;
 
 	public float GetHealthMax() { return _maxHealth; }
 	public float GetHealthCur() { return _curHealth; }
@@ -23,6 +27,8 @@ public class HealthManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (GetComponent<PlayerMovement>())
             _pMove = GetComponent<PlayerMovement>();
         _deathAnim = GetComponent<Animator>();
@@ -49,6 +55,18 @@ public class HealthManager : MonoBehaviour
 		
     }
 
+    public void PlayDamageSound()
+    {
+        if (_audioSource && _damageSound)
+            _audioSource.PlayOneShot(_damageSound, 1f);
+    }
+
+    public void PlayDeathSound()
+    {
+        if (_audioSource && _deathSound)
+            _audioSource.PlayOneShot(_deathSound, 1f);
+    }
+
     //Appying damage or healing
     public void ChangeHealth(float change)
     {
@@ -59,6 +77,7 @@ public class HealthManager : MonoBehaviour
         if (change < 0)
         {
             _inFramesCur = _inFramesMax;
+            PlayDamageSound();
 
             if (GetComponent<PlayerMovement>())
             {
@@ -82,6 +101,7 @@ public class HealthManager : MonoBehaviour
             if (GetComponent<PlayerMovement>())
             {
                 _deathAnim.SetBool("isDead", true);
+                PlayDeathSound();
                 Invoke(nameof(OnDeath), _deathAnimTime);
             }
             else

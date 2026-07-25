@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -11,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
 	public float _curJumpForce = 0f;
 	public float _jumpSpeed = 0.5f;
 	bool _startJumpAnim = false;
-	
+	public AudioClip _jumpSound;
+	public AudioSource _audioSource;
 
 	private Animator _playerAnims;
 
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	void Start()
     {
 		_playerAnims = GetComponent<Animator>();
+		_audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -88,11 +91,13 @@ public class PlayerMovement : MonoBehaviour
 			_playerAnims.SetBool("isWalking", true);
 			_playerAnims.SetBool("isIdle", false);
 		}
-		if (_startJumpAnim)
+		if (_startJumpAnim) {
 			_playerAnims.SetBool("isJumping", true);
+			PlayJumpSound();
+		}
 		else
 			_playerAnims.SetBool("isJumping", false);
-			#endregion
+		#endregion
 	}
 
 
@@ -120,4 +125,10 @@ public class PlayerMovement : MonoBehaviour
 			transform.localScale = ls;
 		}
 	}
+
+	public void PlayJumpSound()
+    {
+        if (_audioSource && _jumpSound)
+            _audioSource.PlayOneShot(_jumpSound, 1f);
+    }
 }
