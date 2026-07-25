@@ -6,6 +6,9 @@ public class HealthManager : MonoBehaviour
     public float _curHealth = 10;
     public float _inFramesMax = 1;
     public float _inFramesCur = 0;
+    public float _KnockBackX = 1;
+    public float _knockBacky = 1;
+    public GameObject _playerEyes;
 
 	public float GetHealthMax() { return _maxHealth; }
 	public float GetHealthCur() { return _curHealth; }
@@ -15,9 +18,13 @@ public class HealthManager : MonoBehaviour
 	private Animator _deathAnim;
     public float _deathAnimTime;
 
+    private PlayerMovement _pMove;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (GetComponent<PlayerMovement>())
+            _pMove = GetComponent<PlayerMovement>();
         _deathAnim = GetComponent<Animator>();
     }
 
@@ -30,7 +37,14 @@ public class HealthManager : MonoBehaviour
 		if (_inFramesCur < 0)
 		{
             _inFramesCur = 0;
+            _playerEyes.SetActive(false);
 		}
+
+        if (_inFramesCur > 0 && GetComponent<PlayerMovement>())
+        {
+            if (_playerEyes.activeSelf == false)
+                _playerEyes.SetActive(true);
+        }
 
 		
     }
@@ -45,6 +59,21 @@ public class HealthManager : MonoBehaviour
         if (change < 0)
         {
             _inFramesCur = _inFramesMax;
+
+            if (GetComponent<PlayerMovement>())
+            {
+                if (_pMove._isFacingRight == true)
+                {
+                    _KnockBackX *= -1;
+                    _pMove.rb.linearVelocity = new Vector2(_KnockBackX, _knockBacky);
+                }
+                else if (_pMove._isFacingRight == false)
+                {
+                    if (_KnockBackX < 0)
+                        _KnockBackX *= -1;
+                        _pMove.rb.linearVelocity = new Vector2(_KnockBackX, _knockBacky);
+				}
+            }
         }
 
         if (_curHealth <= 0)
@@ -66,6 +95,7 @@ public class HealthManager : MonoBehaviour
     void OnDeath()
     {
         Debug.Log("dead");
+        _playerEyes.SetActive(false);
         GameObject.Destroy(gameObject);
     }
 }
