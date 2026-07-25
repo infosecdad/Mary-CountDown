@@ -523,6 +523,7 @@ MonoBehaviour:
   _jumpSpeed: 0.5
   _jumpSound: {fileID: 0}
   _audioSource: {fileID: 111603946}
+  _walkSound: {fileID: 8300000, guid: cb111f071b2e63844afba5ac99aceb2b, type: 3}
   _isJumping: 0
 --- !u!61 &111603943
 BoxCollider2D:

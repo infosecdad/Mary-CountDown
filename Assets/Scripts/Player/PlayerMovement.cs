@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	bool _startJumpAnim = false;
 	public AudioClip _jumpSound;
 	public AudioSource _audioSource;
+	public AudioClip _walkSound;
 
 	private Animator _playerAnims;
 
@@ -90,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			_playerAnims.SetBool("isWalking", true);
 			_playerAnims.SetBool("isIdle", false);
+			PlayWalkSound();
 		}
 		if (_startJumpAnim) {
 			_playerAnims.SetBool("isJumping", true);
@@ -130,5 +132,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_audioSource && _jumpSound)
             _audioSource.PlayOneShot(_jumpSound, 1f);
+    }
+
+	public void PlayWalkSound()
+    {
+        if (_audioSource && _walkSound)
+            _audioSource.PlayOneShot(_walkSound, 1f);
     }
 }
