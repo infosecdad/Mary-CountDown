@@ -16,6 +16,9 @@ public class GameSessionManager : MonoBehaviour
 	[SerializeField, Tooltip("Title menu countdown after game is over")]
 	private float _returnToMenuCountdown = 0;
 
+	[SerializeField, Tooltip("The countdown clock")]
+	public GameObject _countdownClock;
+
 	static public GameSessionManager Instance;
 
 	
