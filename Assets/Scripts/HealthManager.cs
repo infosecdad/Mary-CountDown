@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     public float _inFramesCur = 0;
     public float _KnockBackX = 1;
     public float _knockBacky = 1;
+    public GameObject _playerEyes;
 
 	public float GetHealthMax() { return _maxHealth; }
 	public float GetHealthCur() { return _curHealth; }
@@ -36,7 +37,14 @@ public class HealthManager : MonoBehaviour
 		if (_inFramesCur < 0)
 		{
             _inFramesCur = 0;
+            _playerEyes.SetActive(false);
 		}
+
+        if (_inFramesCur > 0 && GetComponent<PlayerMovement>())
+        {
+            if (_playerEyes.activeSelf == false)
+                _playerEyes.SetActive(true);
+        }
 
 		
     }
@@ -87,6 +95,7 @@ public class HealthManager : MonoBehaviour
     void OnDeath()
     {
         Debug.Log("dead");
+        _playerEyes.SetActive(false);
         GameObject.Destroy(gameObject);
     }
 }
