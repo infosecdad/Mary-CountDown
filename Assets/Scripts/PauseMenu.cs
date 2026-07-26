@@ -46,6 +46,6 @@ public class PauseMenu : MonoBehaviour
     public void OnPressLeaveGameBtn()
     {
         Time.timeScale = 1f;
-		SceneManager.LoadScene("Clock Room");
+		SceneManager.LoadScene("Main Menu");
 	}
 }

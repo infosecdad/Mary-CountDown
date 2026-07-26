@@ -22,7 +22,10 @@ public class FinishScript : MonoBehaviour
     [SerializeField, Tooltip("HUD Clock")]
     GameObject _HUDClock;
 
-    public TextMeshProUGUI _THX4PlayingText;
+    public GameObject _THX4PlayingText;
+    public TextMeshProUGUI _dateYear;
+    public GameObject _PMdot;
+    public GameObject _ESCtext;
 
 	bool _startClock = false;
     bool _hasControlHere = true;
@@ -61,10 +64,14 @@ public class FinishScript : MonoBehaviour
 		}
         if (_hasControlHere)
         {
-			if (_timerInSeconds1 < 10)
-				_clockValue.text = _timerInMinutes1 + ".0" + _timerInSeconds1;
-			if (_timerInSeconds1 > 9)
+			if (_timerInSeconds1 < 10 && _timerInMinutes1 < 10)
+				_clockValue.text = _timerInMinutes1 + "0.0" + _timerInSeconds1;
+			if (_timerInSeconds1 > 9 && _timerInMinutes1 > 9)
 				_clockValue.text = _timerInMinutes1 + "." + _timerInSeconds1;
+			if (_timerInSeconds1 < 10 && _timerInMinutes1 > 9)
+				_clockValue.text = _timerInMinutes1 + ".0" + _timerInSeconds1;
+			if (_timerInSeconds1 > 9 && _timerInMinutes1 < 10)
+				_clockValue.text = _timerInMinutes1 + "0." + _timerInSeconds1;
 		}
     }
 
@@ -93,13 +100,9 @@ public class FinishScript : MonoBehaviour
     {
         _timerInMinutes1 = 0;
         _11Value.text = "12:";
-		if (_timerInSeconds1 < 10 && _timerInMinutes1 < 10)
-			_clockValue.text = _timerInMinutes1 + "00.0" + _timerInSeconds1;
-		if (_timerInSeconds1 > 9 && _timerInMinutes1 > 9)
-			_clockValue.text = _timerInMinutes1 + "." + _timerInSeconds1;
-		if (_timerInSeconds1 < 10 && _timerInMinutes1 > 9)
-			_clockValue.text = _timerInMinutes1 + ".0" + _timerInSeconds1;
-		if (_timerInSeconds1 > 9 && _timerInMinutes1 < 10)
-			_clockValue.text = _timerInMinutes1 + "00." + _timerInSeconds1;
+        _dateYear.text = "Jan. 1, 2000";
+        _PMdot.SetActive(false);
+        _THX4PlayingText.SetActive(true);
+        _ESCtext.SetActive(true);
 	}
 }
