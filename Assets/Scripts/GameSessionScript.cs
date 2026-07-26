@@ -26,6 +26,7 @@ public class GameSessionManager : MonoBehaviour
 	void Awake()
 	{
 		Instance = this;
+		
 	}
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()

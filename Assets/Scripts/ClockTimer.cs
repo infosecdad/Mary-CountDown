@@ -5,8 +5,8 @@ public class ClockTimer : MonoBehaviour
 {
 
     public float _timerInSeconds2 = 57;
-    public int _timerInSeconds = 57;
-    public int _timerInMinutes = 30;
+    public static int _timerInSeconds = 57;
+    public static int _timerInMinutes = 30;
     bool _updatedTimer = false;
     public TextMeshProUGUI _clockValue;
 
