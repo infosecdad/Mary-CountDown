@@ -1,8 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+[RequireComponent(typeof(AudioSource))]
 public class GameSessionManager : MonoBehaviour
 {
+	[SerializeField, Tooltip("Audio source for the game session")]
+	public AudioSource _audioSource;
+
+	public AudioClip _clockTickSound;
 
 	[SerializeField, Tooltip("Player lives")]
 	public int _playerLives = 1;
@@ -30,6 +34,7 @@ public class GameSessionManager : MonoBehaviour
 
 	public float _timerInSeconds2 = 57;
 	public int _timerInSeconds = 57;
+	public int lastSecond = 0;
 	public int _timerInMinutes = 30;
 	bool _updatedTimer = false;
 
@@ -54,7 +59,8 @@ public class GameSessionManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-	
+		_audioSource = GetComponent<AudioSource>();
+		lastSecond = _timerInSeconds;
 	}
 
 	// Update is called once per frame
@@ -71,6 +77,12 @@ public class GameSessionManager : MonoBehaviour
 		{
 			_timerInSeconds2 += Time.deltaTime;
 			_timerInSeconds = Mathf.RoundToInt(_timerInSeconds2);
+
+			if (_timerInSeconds != lastSecond)
+			{
+				lastSecond = _timerInSeconds;
+				_audioSource.PlayOneShot(_clockTickSound, 1f);
+			}
 
 			if (_timerInSeconds == 60)
 			{
