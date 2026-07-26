@@ -1,8 +1,11 @@
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(AudioSource))]
 public class FinishScript : MonoBehaviour
 {
+    public AudioSource _audioSource;
+    public AudioClip _winSound;
 	public TextMeshProUGUI _clockValue;
 	public TextMeshProUGUI _11Value;
 	public int _timerInSeconds1 = 55;
@@ -33,7 +36,7 @@ public class FinishScript : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-        
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -106,5 +109,6 @@ public class FinishScript : MonoBehaviour
         _THX4PlayingText.SetActive(true);
         _ESCtext.SetActive(true);
         _playerDoneState.GetComponent<Animator>().SetBool("Partying", true);
+        _audioSource.PlayOneShot(_winSound);
 	}
 }

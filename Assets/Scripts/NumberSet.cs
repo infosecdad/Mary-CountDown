@@ -24,6 +24,9 @@ public class NumberSet : MonoBehaviour
 
     public void PlayNumberSetSound()
     {
+        if (!_audioSource.enabled) {
+            _audioSource.enabled = true;
+        }
         if (_audioSource && _numberSetSound)
             _audioSource.PlayOneShot(_numberSetSound, 1f);
     }
