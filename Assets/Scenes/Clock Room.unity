@@ -3503,28 +3503,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1190391708}
   - component: {fileID: 1190391707}
-  - component: {fileID: 1190391706}
+  - component: {fileID: 1190391709}
   m_Layer: 0
-  m_Name: GameOverGiver
+  m_Name: ClockRoomGiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1190391706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190391705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f59c1cd40fb1ba4a94364ef50d982a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _gameOverObject2: {fileID: 1904224921}
-  _respawnLocation2: {fileID: 1669333654}
 --- !u!61 &1190391707
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3586,6 +3572,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190391709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190391705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26fdc3c33d4a994d8087e669387b194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClockRoomGiver
+  _gameOverObject2: {fileID: 1904224921}
+  _respawnLocation2: {fileID: 1669333654}
+  _finsh: {fileID: 899570305}
+  _playerObj: {fileID: 111603937}
+  _playerLookState: {fileID: 2134752624}
 --- !u!1 &1194919767
 GameObject:
   m_ObjectHideFlags: 0
@@ -4786,7 +4789,9 @@ MonoBehaviour:
   _playerObj: {fileID: 111603937}
   _timerInSeconds2: 57
   _timerInSeconds: 57
+  lastSecond: 0
   _timerInMinutes: 56
+  _playerLookState: {fileID: 2134752624}
 --- !u!4 &1655308230
 Transform:
   m_ObjectHideFlags: 0
@@ -7603,7 +7608,7 @@ GameObject:
   - component: {fileID: 2134752627}
   m_Layer: 0
   m_Name: LookingSprite
-  m_TagString: Untagged
+  m_TagString: PlayerState
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

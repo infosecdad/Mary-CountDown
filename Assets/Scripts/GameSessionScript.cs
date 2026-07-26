@@ -38,6 +38,8 @@ public class GameSessionManager : MonoBehaviour
 	public int _timerInMinutes = 30;
 	bool _updatedTimer = false;
 
+	public GameObject _playerLookState;
+
 	
 	void Awake()
 	{

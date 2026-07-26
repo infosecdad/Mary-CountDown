@@ -11,10 +11,10 @@ public class FinishScript : MonoBehaviour
     bool _updatedTimer;
 
 	[SerializeField, Tooltip("Player's looking up sprite")]
-    GameObject _playerDoneState;
+    public GameObject _playerDoneState;
 
     [SerializeField, Tooltip("Player")]
-    GameObject _player;
+    public GameObject _player;
 
     [SerializeField, Tooltip("Clock")]
     GameObject _clock;
