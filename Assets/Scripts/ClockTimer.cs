@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class ClockTimer : MonoBehaviour
 {
@@ -7,9 +8,10 @@ public class ClockTimer : MonoBehaviour
     public int _timerInSeconds = 57;
     public int _timerInMinutes = 30;
     bool _updatedTimer = false;
+    public TextMeshProUGUI _clockValue;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	void Start()
     {
         
     }
@@ -32,5 +34,8 @@ public class ClockTimer : MonoBehaviour
         }
         else
             _updatedTimer = false;
+
+
+        _clockValue.text = _timerInMinutes + "." + _timerInSeconds;
     }
 }
