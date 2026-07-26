@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		if (_startJumpAnim) {
 			_playerAnims.SetBool("isJumping", true);
-			PlayJumpSound();
+			//PlayJumpSound();
 		}
 		else
 			_playerAnims.SetBool("isJumping", false);
