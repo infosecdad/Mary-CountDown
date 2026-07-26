@@ -25,8 +25,14 @@ public class GameSessionManager : MonoBehaviour
 
 	void Awake()
 	{
+		if (Instance != null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
 		Instance = this;
-		
+		DontDestroyOnLoad(gameObject);
 	}
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()

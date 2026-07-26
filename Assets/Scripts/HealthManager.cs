@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     public float _maxHealth = 10;
-    public static float _curHealth = 10;
+    public float _curHealth = 10;
     public float _inFramesMax = 1;
     public float _inFramesCur = 0;
     public float _KnockBackX = 1;
