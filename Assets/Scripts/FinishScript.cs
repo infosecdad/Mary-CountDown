@@ -27,7 +27,7 @@ public class FinishScript : MonoBehaviour
 
     public GameObject _THX4PlayingText;
     public TextMeshProUGUI _dateYear;
-    public GameObject _PMdot;
+    public TextMeshProUGUI _PMdot;
     public GameObject _ESCtext;
 
 	bool _startClock = false;
@@ -105,7 +105,7 @@ public class FinishScript : MonoBehaviour
         _timerInMinutes1 = 0;
         _11Value.text = "12:";
         _dateYear.text = "Jan. 1, 2000";
-        _PMdot.SetActive(false);
+        _PMdot.text = "AM";
         _THX4PlayingText.SetActive(true);
         _ESCtext.SetActive(true);
         _playerDoneState.GetComponent<Animator>().SetBool("Partying", true);

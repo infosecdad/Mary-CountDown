@@ -3300,7 +3300,7 @@ MonoBehaviour:
   _HUDClock: {fileID: 1931712456}
   _THX4PlayingText: {fileID: 1949403204}
   _dateYear: {fileID: 240383951}
-  _PMdot: {fileID: 765199578}
+  _PMdot: {fileID: 1520575886}
   _ESCtext: {fileID: 377278103}
 --- !u!61 &899570307
 BoxCollider2D:
