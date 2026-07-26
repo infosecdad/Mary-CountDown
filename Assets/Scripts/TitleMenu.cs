@@ -21,6 +21,6 @@ public class TItleMenu : MonoBehaviour
 	/// </summary>
 	public void OnPressStartGameBtn()
 	{
-		SceneManager.LoadScene("Test Room");
+		SceneManager.LoadScene("Clock Room");
 	}
 }
