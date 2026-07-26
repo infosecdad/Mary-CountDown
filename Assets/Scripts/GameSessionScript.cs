@@ -11,7 +11,7 @@ public class GameSessionManager : MonoBehaviour
 	private Transform _respawnLocation;
 
 	[SerializeField, Tooltip("Object to display when game is over")]
-	private GameObject _gameOverObject;
+	public GameObject _gameOverObject;
 
 	[SerializeField, Tooltip("Title menu countdown after game is over")]
 	private float _returnToMenuCountdown = 0;

@@ -30,7 +30,7 @@ public class SwitchSceneOnCollision : MonoBehaviour
 				GameObject player = GameObject.FindGameObjectWithTag("Player");
 				if(player != null)
 				{
-					player.transform.position = new Vector3(-7, -1.5f, 0);
+					player.transform.position = new Vector3(-8, -1.5f, 0);
 				}
 				enabled = false;
 			}
