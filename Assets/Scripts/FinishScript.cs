@@ -104,5 +104,6 @@ public class FinishScript : MonoBehaviour
         _PMdot.SetActive(false);
         _THX4PlayingText.SetActive(true);
         _ESCtext.SetActive(true);
+        _playerDoneState.GetComponent<Animator>().SetBool("Partying", true);
 	}
 }
