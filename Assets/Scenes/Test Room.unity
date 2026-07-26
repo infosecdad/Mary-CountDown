@@ -708,7 +708,7 @@ MonoBehaviour:
   _audioSource: {fileID: 111603946}
   _damageSound: {fileID: 0}
   _deathSound: {fileID: 8300000, guid: 0c836c3fb1cb15049a877ad68bdee601, type: 3}
-  _deathAnimTime: 0
+  _deathAnimTime: 1.5
 --- !u!82 &111603946
 AudioSource:
   m_ObjectHideFlags: 0
