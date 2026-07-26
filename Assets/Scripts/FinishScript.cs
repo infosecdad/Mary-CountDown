@@ -28,7 +28,7 @@ public class FinishScript : MonoBehaviour
     public GameObject _ESCtext;
 
 	bool _startClock = false;
-    bool _hasControlHere = true;
+    bool _hasControlHere = false;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -81,6 +81,7 @@ public class FinishScript : MonoBehaviour
         {
             if (GameSessionManager.Instance._hasNumbers == true)
             {
+                _hasControlHere = true;
                 _startClock = true;
                 _HUDClock.SetActive(false);
                 _player.transform.position = new Vector3(0, -1.5f, 0);
