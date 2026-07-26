@@ -18,10 +18,10 @@ public class HealthManager : MonoBehaviour
 
 	public float GetHealthMax() { return _maxHealth; }
 	public float GetHealthCur() { return _curHealth; }
-	//i dont remember why i added this i never used it
-	//bool _isDead = false;
 
-	private Animator _deathAnim;
+	public bool _isDead = false;
+
+	public Animator _deathAnim;
     public float _deathAnimTime;
 
     private PlayerMovement _pMove;
@@ -62,8 +62,13 @@ public class HealthManager : MonoBehaviour
                 _playerEyes.SetActive(true);
         }
 
-		
-    }
+		if (_isDead)
+		{
+			_deathAnim.SetBool("isDead", true);
+			PlayDeathSound();
+			Invoke(nameof(OnDeath), _deathAnimTime);
+		}
+	}
 
     public void PlayDamageSound()
     {
@@ -107,18 +112,14 @@ public class HealthManager : MonoBehaviour
 
         if (_curHealth <= 0)
         {
+            _isDead = true;
             _curHealth = 0;
-            if (GetComponent<PlayerMovement>())
-            {
-                _deathAnim.SetBool("isDead", true);
-                PlayDeathSound();
-                Invoke(nameof(OnDeath), _deathAnimTime);
-            }
-            else
-                GameObject.Destroy(gameObject);
+            
         }
 
-        if (_curHealth > _maxHealth)
+		
+
+		if (_curHealth > _maxHealth)
             _curHealth = _maxHealth;
     }
     //dead

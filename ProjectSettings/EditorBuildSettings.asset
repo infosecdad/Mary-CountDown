@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clock Room.unity
     guid: 70cd9ab91c8477e45810a5618a45d9d4
+  - enabled: 1
+    path: Assets/Scenes/Num Room 1.unity
+    guid: ebdb3ffea683bfb45a45bc581e9a99c4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

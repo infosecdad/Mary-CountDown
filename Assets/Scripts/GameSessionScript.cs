@@ -19,16 +19,21 @@ public class GameSessionManager : MonoBehaviour
 	[SerializeField, Tooltip("The countdown clock")]
 	public GameObject _countdownClock;
 
-	[SerializeField, Tooltip("Timer in seconds")]
-	public int _secTime;
+	[SerializeField, Tooltip("Do we have the numbers?")]
+	public bool _hasNumbers = false;
 
-	[SerializeField, Tooltip("Timer in minutes")]
-	public int _minTime;
+	public bool _thisAlsoHasControl = true;
+
+	public GameObject _playerObj;
 
 	static public GameSessionManager Instance;
 
-	
+	public float _timerInSeconds2 = 57;
+	public int _timerInSeconds = 57;
+	public int _timerInMinutes = 30;
+	bool _updatedTimer = false;
 
+	
 	void Awake()
 	{
 		if (Instance != null)
@@ -61,6 +66,26 @@ public class GameSessionManager : MonoBehaviour
 			if (_returnToMenuCountdown < 0)
 				SceneManager.LoadScene("Main Menu");
 		}
+
+		if (_thisAlsoHasControl)
+		{
+			_timerInSeconds2 += Time.deltaTime;
+			_timerInSeconds = Mathf.RoundToInt(_timerInSeconds2);
+
+			if (_timerInSeconds == 60)
+			{
+				_timerInSeconds = 0;
+				_timerInSeconds2 = 0;
+				if (_updatedTimer == false)
+				{
+					_timerInMinutes += 1;
+					_updatedTimer = true;
+				}
+			}
+			else
+				_updatedTimer = false;
+		}
+
 	}
 
 	public void OnPlayerDeath(GameObject player)
@@ -92,5 +117,11 @@ public class GameSessionManager : MonoBehaviour
 				player.transform.position = _respawnLocation.position;
 		}
 
+	}
+
+	public void OnClockEnd()
+	{
+		_playerLives = 0;
+		_playerObj.GetComponent<HealthManager>()._isDead = true;
 	}
 }

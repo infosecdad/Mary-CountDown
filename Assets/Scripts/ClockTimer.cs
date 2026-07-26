@@ -4,12 +4,12 @@ using TMPro;
 public class ClockTimer : MonoBehaviour
 {
 
-    public float _timerInSeconds2 = 57;
-    public int _timerInSeconds = 57;
-    public int _timerInMinutes = 30;
-    bool _updatedTimer = false;
+    public int _timerInSeconds1 = 57;
+    public int _timerInMinutes1 = 30;
+ 
     public TextMeshProUGUI _clockValue;
-
+    public TextMeshProUGUI _11Value;
+    public bool _thisHasControl = true;
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
@@ -19,30 +19,25 @@ public class ClockTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _timerInSeconds2 += Time.deltaTime;
-        _timerInSeconds = Mathf.RoundToInt( _timerInSeconds2 );
 
-        if (_timerInSeconds == 60)
+        if (_thisHasControl)
         {
-            _timerInSeconds = 0;
-            _timerInSeconds2 = 0;
-            if (_updatedTimer == false)
+            _timerInSeconds1 = GameSessionManager.Instance._timerInSeconds;
+            _timerInMinutes1 = GameSessionManager.Instance._timerInMinutes;
+
+            if (_timerInSeconds1 < 10)
+                _clockValue.text = _timerInMinutes1 + ".0" + _timerInSeconds1;
+            if (_timerInSeconds1 > 9)
+                _clockValue.text = _timerInMinutes1 + "." + _timerInSeconds1;
+
+            if (_timerInMinutes1 >= 60)
             {
-                _timerInMinutes += 1;
-                _updatedTimer = true;
+                Debug.Log("Timer has reached the end");
+                GameSessionManager.Instance._timerInSeconds = 0;
+                GameSessionManager.Instance._timerInMinutes = 0;
+                _11Value.text = "12:";
+                GameSessionManager.Instance.OnClockEnd();
             }
         }
-        else
-            _updatedTimer = false;
-
-		GameSessionManager.Instance._secTime = _timerInSeconds;
-        GameSessionManager.Instance._minTime = _timerInMinutes;
-
-		if (_timerInSeconds < 10)
-			_clockValue.text = GameSessionManager.Instance._minTime + ".0" + GameSessionManager.Instance._secTime;
-		if (_timerInSeconds > 9)
-            _clockValue.text = GameSessionManager.Instance._minTime + "." + GameSessionManager.Instance._secTime;
-
-
     }
 }
