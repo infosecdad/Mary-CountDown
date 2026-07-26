@@ -33,11 +33,17 @@ public class GameSessionManager : MonoBehaviour
 
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
+
+		_gameOverObject = GameObject.Find("/Canvas/GameOverText");
+		if (_gameOverObject)
+		{
+			_gameOverObject.SetActive(false);
+		}
 	}
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-
+	
 	}
 
 	// Update is called once per frame
@@ -58,7 +64,11 @@ public class GameSessionManager : MonoBehaviour
 			//player is out of lives
 			GameObject.Destroy(player.gameObject);
 			Debug.Log("Game over");
-			_gameOverObject.SetActive(true);
+
+			if (_gameOverObject)
+			{
+				_gameOverObject.SetActive(true);
+			}
 			_returnToMenuCountdown = 2;
 		}
 		else

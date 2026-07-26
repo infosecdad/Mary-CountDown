@@ -10,7 +10,11 @@ public class CameraFollow : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-      
+      GameObject player = GameObject.FindGameObjectWithTag("Player");
+      if(player != null)
+      {
+          _cameraTarget = player;
+      }
     }
 
     // Update is called once per frame

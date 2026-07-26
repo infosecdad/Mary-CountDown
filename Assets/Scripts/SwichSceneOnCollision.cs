@@ -27,6 +27,11 @@ public class SwitchSceneOnCollision : MonoBehaviour
 			{
 				//time to load scene (Make sure it is added in build settings!)
 				SceneManager.LoadScene(_SceneToLoad);
+				GameObject player = GameObject.FindGameObjectWithTag("Player");
+				if(player != null)
+				{
+					player.transform.position = new Vector3(-7, -1.5f, 0);
+				}
 				enabled = false;
 			}
 		}

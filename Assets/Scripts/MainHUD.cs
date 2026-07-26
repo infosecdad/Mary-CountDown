@@ -25,6 +25,14 @@ public class MainGameHUD : MonoBehaviour
 	void Start()
 	{
 		_healthIAnim = _healthIcon.GetComponent<Animator>();
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+      if(player != null)
+      {
+          _healthManager = player.GetComponent<HealthManager>();
+      }
+		
+		
+		
 	}
 
 	// Update is called once per frame

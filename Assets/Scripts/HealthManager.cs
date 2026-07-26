@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class HealthManager : MonoBehaviour
 {
+
+    public static HealthManager Instance;
     public float _maxHealth = 10;
     public float _curHealth = 10;
     public float _inFramesMax = 1;
@@ -27,6 +29,14 @@ public class HealthManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       if( Instance != null ) {
+           GameObject.Destroy(gameObject);
+           return;
+        }
+        
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         _audioSource = GetComponent<AudioSource>();
 
         if (GetComponent<PlayerMovement>())

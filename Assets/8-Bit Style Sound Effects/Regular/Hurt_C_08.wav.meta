@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: b5bf5321322df7d46abe4847d1209e09
+AssetOrigin:
+  serializedVersion: 1
+  productId: 68228
+  packageName: 8-Bit Style Sound Effects
+  packageVersion: 1.1
+  assetPath: Assets/8-Bit Style Sound Effects/Regular/Hurt_C_08.wav
+  uploadId: 148137
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -11,7 +18,7 @@ AudioImporter:
     compressionFormat: 0
     quality: 1
     conversionMode: 0
-    preloadAudioData: 0
+    preloadAudioData: 1
   platformSettingOverrides: {}
   forceToMono: 0
   normalize: 1
@@ -21,10 +28,3 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 68228
-  packageName: 8-Bit Style Sound Effects
-  packageVersion: 1.1
-  assetPath: Assets/8-Bit Style Sound Effects/Regular/Hurt_C_08.wav
-  uploadId: 148137
