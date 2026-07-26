@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 159470827}
   - component: {fileID: 159470826}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Room 1 exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -994,6 +994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwitchSceneOnCollision
   _SceneToLoad: Test Room
   _transitionTime: 0
+  _targetPositon: {x: -8.5, y: -1.5, z: 0}
 --- !u!61 &159470827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4337,6 +4338,8 @@ MonoBehaviour:
   _gameOverObject: {fileID: 1904224921}
   _returnToMenuCountdown: 0
   _countdownClock: {fileID: 0}
+  _secTime: 0
+  _minTime: 0
 --- !u!4 &1655308230
 Transform:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class GameSessionManager : MonoBehaviour
 	public int _playerLives = 1;
 
 	[SerializeField, Tooltip("Where the player will respawn")]
-	private Transform _respawnLocation;
+	public Transform _respawnLocation;
 
 	[SerializeField, Tooltip("Object to display when game is over")]
 	public GameObject _gameOverObject;

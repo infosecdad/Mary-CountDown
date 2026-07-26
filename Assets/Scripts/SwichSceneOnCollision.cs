@@ -11,6 +11,7 @@ public class SwitchSceneOnCollision : MonoBehaviour
 
 	private bool _hasCollided = false;
 
+	public Vector3 _targetPositon;
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
@@ -30,7 +31,7 @@ public class SwitchSceneOnCollision : MonoBehaviour
 				GameObject player = GameObject.FindGameObjectWithTag("Player");
 				if(player != null)
 				{
-					player.transform.position = new Vector3(-8, -1.5f, 0);
+					player.transform.position = new Vector3(_targetPositon.x, _targetPositon.y, 0);
 				}
 				enabled = false;
 			}
