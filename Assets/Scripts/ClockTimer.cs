@@ -13,8 +13,8 @@ public class ClockTimer : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-        
-    }
+
+	}
 
     // Update is called once per frame
     void Update()
@@ -35,9 +35,14 @@ public class ClockTimer : MonoBehaviour
         else
             _updatedTimer = false;
 
-        if (_timerInSeconds < 10)
-			_clockValue.text = _timerInMinutes + ".0" + _timerInSeconds;
+		GameSessionManager.Instance._secTime = _timerInSeconds;
+        GameSessionManager.Instance._minTime = _timerInMinutes;
+
+		if (_timerInSeconds < 10)
+			_clockValue.text = GameSessionManager.Instance._minTime + ".0" + GameSessionManager.Instance._secTime;
 		if (_timerInSeconds > 9)
-            _clockValue.text = _timerInMinutes + "." + _timerInSeconds;
+            _clockValue.text = GameSessionManager.Instance._minTime + "." + GameSessionManager.Instance._secTime;
+
+
     }
 }

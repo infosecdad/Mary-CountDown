@@ -19,6 +19,12 @@ public class GameSessionManager : MonoBehaviour
 	[SerializeField, Tooltip("The countdown clock")]
 	public GameObject _countdownClock;
 
+	[SerializeField, Tooltip("Timer in seconds")]
+	public int _secTime;
+
+	[SerializeField, Tooltip("Timer in minutes")]
+	public int _minTime;
+
 	static public GameSessionManager Instance;
 
 	
