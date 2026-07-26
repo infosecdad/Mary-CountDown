@@ -23,4 +23,9 @@ public class TItleMenu : MonoBehaviour
 	{
 		SceneManager.LoadScene("Clock Room");
 	}
+
+	public void OnPressExitGameBtn()
+	{
+		Application.Quit();
+	}
 }
