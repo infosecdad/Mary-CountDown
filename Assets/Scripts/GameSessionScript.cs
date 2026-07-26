@@ -36,7 +36,7 @@ public class GameSessionManager : MonoBehaviour
 	public int _timerInSeconds = 57;
 	public int lastSecond = 0;
 	public int _timerInMinutes = 30;
-	bool _updatedTimer = false;
+	public bool _updatedTimer = false;
 
 	public GameObject _playerLookState;
 
@@ -126,6 +126,7 @@ public class GameSessionManager : MonoBehaviour
 				GetComponent<HealthManager>();
 			if (playerHealth)
 				playerHealth.Reset();
+			playerHealth._isDead = false;
 
 			if (_respawnLocation)
 				player.transform.position = _respawnLocation.position;

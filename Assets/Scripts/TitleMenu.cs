@@ -22,6 +22,14 @@ public class TItleMenu : MonoBehaviour
 	public void OnPressStartGameBtn()
 	{
 		SceneManager.LoadScene("Clock Room");
+		GameSessionManager.Instance._timerInSeconds2 = 57;
+		GameSessionManager.Instance._timerInSeconds = 57;
+		GameSessionManager.Instance.lastSecond = 0;
+		GameSessionManager.Instance._timerInMinutes = 56;
+		GameSessionManager.Instance._updatedTimer = false;
+		GameSessionManager.Instance._playerLookState.SetActive(false);
+		GameSessionManager.Instance._playerObj.GetComponent<SpriteRenderer>().enabled = true;
+		GameSessionManager.Instance._playerObj.GetComponent<PlayerMovement>()._moveSpeed = 5;
 	}
 
 	public void OnPressExitGameBtn()
